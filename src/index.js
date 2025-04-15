@@ -7,7 +7,6 @@ dotenv.config({
     path: './env'
 })
 
-
 // import express from 'express'
 // const app = express()
 // // IIFE
@@ -30,3 +29,11 @@ dotenv.config({
 // })()
 
 connectDB()
+.then(()=>{
+    app.listen(process.env.PORT || 8000,()=>{
+        console.log(`server is running at port: ${process.env.PORT}`)
+    })
+})
+.catch((err)=>{
+    console.log("connection failed",err)
+})
